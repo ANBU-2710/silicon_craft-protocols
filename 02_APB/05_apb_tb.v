@@ -1,8 +1,3 @@
-// Code your testbench here
-// or browse Examples
-// Code your testbench here
-// or browse Examples
-
 `timescale 1ns/1ns
 
 module apb_tb;
@@ -58,7 +53,7 @@ module apb_tb;
       @(posedge PCLK)
       
       transfer = 0;
-      #1; // Delay for display
+      #1; 
 
       
       $display("apb read_data_out = %0d",apb_read_data_out);
@@ -85,15 +80,11 @@ module apb_tb;
     
     PRESETn = 1;
     
-    
     apb_write(9'd5, 8'd55);
     apb_write(9'd10, 8'd99);
-    
-    
-
+  
     apb_write(9'd260, 8'd123); 
     apb_write(9'd300, 8'd200);
-    
     
     apb_read(9'd5);
     apb_read(9'd50);
