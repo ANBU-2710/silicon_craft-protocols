@@ -28,7 +28,7 @@ module apb_master(
     end
     else begin
       state <= next_state;
-      // Capture read data when transaction completes (PREADY high in ACCESS)
+     
       if (state == ACCESS && PREADY && READ_WRITE)
         apb_read_data_out <= PRDATA;
     end
@@ -36,7 +36,7 @@ module apb_master(
   
   //master fsm logic
   always @(*)begin
-    // Default values to prevent latches
+   
     PENABLE = 0;
     sel1 = 0;
     sel2 = 0;
@@ -83,14 +83,9 @@ module apb_master(
       
       //ACCESS STATE LOGIC
       ACCESS: begin
-        // Keep address and data stable
+       
         PENABLE = 1;
-        PWRITE = ~READ_WRITE; // Keep PWRITE stable
-
-        // Re-assert address/data/sel logic from SETUP
-        // (In a Moore machine, these depend on state. Here they depend on state & inputs)
-        // To be safe, we should duplicate logic or latch outputs.
-        // But for APB, PADDR/PWDATA must be stable.
+        PWRITE = ~READ_WRITE; 
         
         if(READ_WRITE)begin
           PADDR = apb_read_paddr;
