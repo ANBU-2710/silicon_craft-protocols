@@ -1,12 +1,11 @@
-///APB SLAVE_1////
-
 module apb_slave1(
   
-  //SLAVE1 INPUTS
+  //INPUTS
   input PCLK,PRESETn,PENABLE,PSEL,PWRITE,
   input [8:0]PADDR,
   input [7:0]PWDATA,
-  //SLAVE2 OUPUTS
+  
+  //OUPTUTS
   output [7:0]PRDATA1,
   output reg PREADY1
   
